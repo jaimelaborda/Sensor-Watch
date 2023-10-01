@@ -30,8 +30,22 @@
 /*
  * A DESCRIPTION OF YOUR WATCH FACE
  *
- * and a description of how use it
- *
+ * This watch face is a tennis scoreboard. It keeps track of the score of a tennis match.
+ * It has 3 screens:
+ * - Match screen: Shows the current score of the match
+ * - Results screen: Shows the results of the match
+ * - Settings screen: Allows to change the number of sets and games per set (TODO, not implemented yet)
+ * 
+ * When the watch face is activated, it shows the match screen. User can change between screens by pressing the LIGHT button.
+ * Press MODE button when Player 1 wins a point. Press the ALARM button when Player 2 wins a point.
+ * A game is won when a player reaches 4 points and has 2 points more than the other player.
+ * A set is won when a player wins 6 games and has 2 games more than the other player.
+ * A match is won when a player wins 2 sets (TODO: this is by default, but can be changed in the settings screen)
+ * When the match is over, the results screen is shown. (TODO, not implemented yet)
+ * Result screen can also accessed by pressing LIGHT button. In this screen, pressing ALARM button changes the set (1, 2 or 3)
+ * In the results screen, long pressing MODE button resets the match.
+ * 
+ * IMPORTANT: To go to the next watch face, long press LIGHT button. This is done on purpose to avoid changing watch face by mistake.
  */
 
 /*
@@ -39,16 +53,10 @@
 *  - Add tiebreak logic
 *  - Add serve logic
 *  - Solve issue match reseting on each face activation
+*  - Solve bug when substracting points if player has 0 points
+*  - Add settings screen
+*  - Show the results screen when the match is over and blink the winner
 */
-
-//uint8_t lut_points = {"0", "15", "30", "40", "Ad"};
-//typedef enum WatchIndicatorSegment { -> Usar este tipo de struct para indicar los puntos
-//    WATCH_INDICATOR_SIGNAL = 0, ///< The hourly signal indicator; also useful for indicating that sensors are on.
-//    WATCH_INDICATOR_BELL,       ///< The small bell indicating that an alarm is set.
-//    WATCH_INDICATOR_PM,         ///< The PM indicator, indicating that a time is in the afternoon.
-//    WATCH_INDICATOR_24H,        ///< The 24H indicator, indicating that the watch is in a 24-hour mode.
-//    WATCH_INDICATOR_LAP         ///< The LAP indicator; the F-91W uses this in its stopwatch UI.
-//} WatchIndicatorSegment;
 
 typedef struct {
     uint8_t points;
